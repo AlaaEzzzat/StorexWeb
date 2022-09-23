@@ -1,4 +1,3 @@
-import { IMovie } from "./../../Models/imovie";
 import { Component, OnInit, OnChanges } from "@angular/core";
 import { Location } from "@angular/common";
 import { Router } from "@angular/router";
@@ -59,7 +58,7 @@ export class HomeComponent implements OnInit {
   openAddMovieToUpdate(id: number) {
     this.router.navigate(["AddMovie", id]);
   }
-  track(index: number, movie: IMovie) {
+  track(index: number, movie: any) {
     return movie.id;
   }
 }

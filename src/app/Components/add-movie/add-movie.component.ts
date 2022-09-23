@@ -1,5 +1,5 @@
 import { MovieService } from "./../../services/movie.service";
-import { IMovie } from "./../../Models/imovie";
+
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { Location } from "@angular/common";
@@ -109,8 +109,12 @@ export class AddMovieComponent implements OnInit {
       this.movieService.addMovie(formData).subscribe({
         next: (response: any) => {
           console.log(" Added!");
-          console.log(response);
-          this.router.navigate(["/Home/"]);
+          console.log(response.status);
+          if (response.status == "failed") {
+            alert("make Sure of your type of Image ");
+          } else {
+            this.router.navigate(["/Home/"]);
+          }
         },
         error: (err: any) => {
           console.log(err);
@@ -119,15 +123,6 @@ export class AddMovieComponent implements OnInit {
       });
     } else {
       console.log("in update");
-      /* this.movie = { ...this.originMovie, ...this.addMovieForm.value };
-      for (var key in this.originMovie) {
-        formData.append(key, this.originMovie[key]);
-      } */
-      /* formData.set("name", this.movie.name);
-      formData.set("description", this.movie.description);
-      formData.set("category_id", String(this.movie.category_id));
-      formData.append("image", this.movie.image);
-      formData.append("_method", "put"); */
       formData.append("_method", "put");
       console.log(formData);
       this.movieService.updateMovie(formData, this.currMovieID).subscribe({

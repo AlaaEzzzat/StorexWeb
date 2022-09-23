@@ -1,6 +1,4 @@
 import { UserService } from "./../../services/user.service";
-import { IUser } from "src/app/Models/iuser";
-
 import { Router } from "@angular/router";
 
 import { Component, OnInit, OnChanges } from "@angular/core";
@@ -18,7 +16,7 @@ import {
   styleUrls: ["./login-page.component.css", "./../../styles/formStyle.css"],
 })
 export class LoginPageComponent implements OnInit {
-  insertedUser: IUser = {} as IUser;
+  insertedUser: any = {};
   loginForm: FormGroup;
   show: string = "password";
   eye: string = "fa fa-eye-slash";

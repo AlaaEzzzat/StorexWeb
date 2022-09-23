@@ -1,5 +1,4 @@
 import { UserService } from "./../../services/user.service";
-import { IUser } from "src/app/Models/iuser";
 
 import { Router } from "@angular/router";
 
@@ -18,7 +17,7 @@ import {
   styleUrls: ["./register-page.component.css", "./../../styles/formStyle.css"],
 })
 export class RegisterPageComponent implements OnInit {
-  insertedUser: IUser = {} as IUser;
+  insertedUser: any = {};
   newSellerCode: number = 0;
   registerForm: FormGroup;
   show: string = "password";

@@ -1,4 +1,3 @@
-import { IMovie } from "./../Models/imovie";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
@@ -35,14 +34,7 @@ export class MovieService {
   }
 
   updateMovie(movie: any, id: number): Observable<any> {
-    let headers = new HttpHeaders();
-    headers = headers.set("Content-Type", "multipart/form-data");
-    return this.httpClient.put<any>(
-      `${this.baseUrl}/${id}`,
-      movie,
-
-      this.httpOptions
-    );
+    return this.httpClient.post<any>(`${this.baseUrl}/${id}`, movie);
   }
 
   deleteMovie(id: number): Observable<any> {

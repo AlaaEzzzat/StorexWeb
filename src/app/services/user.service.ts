@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
-import { IUser } from "src/app/Models/iuser";
+
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Injectable({

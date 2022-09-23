@@ -22,7 +22,7 @@
             id="usrName"
             formControlName="name"
             [class.is-valid]="name?.valid"
-            [class.is-invalid]="name?.invalid"
+            [class.is-invalid]="name?.invalid && name?.touched"
           />
           <div
             class="alert alert-warning mt-1"
@@ -41,7 +41,7 @@
             id="description"
             formControlName="description"
             [class.is-valid]="description?.valid"
-            [class.is-invalid]="description?.invalid"
+            [class.is-invalid]="description?.invalid && description?.touched"
           />
           <div
             class="alert alert-warning mt-1"
@@ -64,7 +64,7 @@
               id="category"
               formControlName="category_id"
               [class.is-valid]="category?.valid"
-              [class.is-invalid]="category?.invalid"
+              [class.is-invalid]="category?.invalid && category?.touched"
             >
               <
               <ng-container *ngFor="let cat of categoryList; let i = index">
