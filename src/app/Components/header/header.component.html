@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <div>
+      <img
+        src="./assets/logo.png"
+        alt="logo"
+        style="height: 50px; margin-right: 10px"
+      />
+      <a class="navbar-brand" routerLink="/Home" routerLinkActive="active"
+        >Storex<b>Web</b>
+      </a>
+    </div>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="d-flex w-100 justify-content-between flex-end">
+        <div class="nav-item d-flex w-100 flex-row-reverse">
+          <a class="btn btn-danger me-3" (click)="logout()">
+            Log out
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+          </a>
+          <a
+            class="btn btn-success me-3"
+            routerLink="/AddMovie"
+            routerLinkActive="active"
+            >Add Movie
+            <i class="fa fa-plus" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

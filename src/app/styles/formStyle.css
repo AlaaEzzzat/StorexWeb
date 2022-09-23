@@ -1,0 +1,24 @@
+.formPage{
+    background-image: linear-gradient( #2d9ff7, rgb(247, 247, 250));
+    padding: 50px 0;
+    min-height: 100vh 
+  }
+  .myform{
+    border: 1px solid #e8e8e8;
+    box-shadow: 0 0 15px #163c5a;
+    border-radius: 10px;
+    background-color: #fff;
+    
+  }
+  .myform label{
+    font-weight: bold;
+  }
+  
+  .myform .iconeye{
+    top: 6px;
+    right: 40px;
+    background-color: #126daa;
+    position: absolute;
+    padding: 5px;
+    border-radius: 50%;
+  }

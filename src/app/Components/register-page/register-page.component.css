@@ -1,0 +1,7 @@
+.is-invalid{
+  border-left: 5px solid #F00;
+}
+.is-valid{
+  border-left: 5px solid #080;
+}
+

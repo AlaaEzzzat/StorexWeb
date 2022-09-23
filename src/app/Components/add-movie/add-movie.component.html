@@ -1,0 +1,117 @@
+<!--  -->
+<app-header></app-header>
+<div class="formPage p-5">
+  <div *ngIf="showLoader" class="mt-5 text-center">
+    <app-loader></app-loader>
+  </div>
+  <div class="updateSection" *ngIf="!showLoader && status">
+    <div class="container">
+      <h2 class="pb-5 text-center">{{ method }} Your Movie</h2>
+      <form
+        [formGroup]="addMovieForm"
+        (ngSubmit)="doAction()"
+        class="myform p-3 m-auto"
+        style="width: 75%"
+      >
+        <div>
+          <label for="usrName" class="form-label">Movie Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="usrName"
+            id="usrName"
+            formControlName="name"
+            [class.is-valid]="name?.valid"
+            [class.is-invalid]="name?.invalid"
+          />
+          <div
+            class="alert alert-warning mt-1"
+            [hidden]="name?.valid || name?.untouched"
+          >
+            <span *ngIf="name?.errors?.['required']"> Name is required</span>
+          </div>
+        </div>
+        <hr />
+        <div>
+          <label for="description" class="form-label">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="description"
+            formControlName="description"
+            [class.is-valid]="description?.valid"
+            [class.is-invalid]="description?.invalid"
+          />
+          <div
+            class="alert alert-warning mt-1"
+            [hidden]="description?.valid || description?.untouched"
+          >
+            <span *ngIf="description?.errors?.['required']"
+              >description is required</span
+            >
+          </div>
+        </div>
+        <hr />
+
+        <div>
+          <div class="selection">
+            <label for="movieCat" class="catLabel">Select Category:</label>
+            <select
+              class="form-control"
+              placeholder="Select Category"
+              name="category"
+              id="category"
+              formControlName="category_id"
+              [class.is-valid]="category?.valid"
+              [class.is-invalid]="category?.invalid"
+            >
+              <
+              <ng-container *ngFor="let cat of categoryList; let i = index">
+                {{ cat }}
+                <option [value]="cat.id" [id]="i">{{ cat.name }}</option>
+              </ng-container>
+            </select>
+          </div>
+          <div
+            class="alert alert-warning mt-1"
+            [hidden]="category?.valid || category?.untouched"
+          >
+            <span *ngIf="category?.errors?.['required']"
+              >category is required</span
+            >
+            <span *ngIf="category?.errors?.['minlength']">
+              category must be at least 5 letters</span
+            >
+          </div>
+        </div>
+        <hr />
+        <div>
+          <img
+            *ngIf="method == 'Update'"
+            alt=""
+            style="width: 100px"
+            [src]="'https://test-api.storexweb.com/' + originMovie.image"
+          />
+
+          <label for="image" class="form-label d-block">Movie Image Src</label>
+          <input
+            type="file"
+            class="form-control"
+            name="image"
+            id="image"
+            (change)="onImageUpload($event)"
+          />
+        </div>
+        <hr />
+        <button
+          type="submit"
+          class="btn btn-success"
+          [disabled]="!addMovieForm.valid"
+        >
+          {{ method }}
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

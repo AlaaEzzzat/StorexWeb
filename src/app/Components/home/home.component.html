@@ -1,0 +1,77 @@
+<app-header></app-header>
+<div class="myContent container-fluid">
+  <div *ngIf="showLoader" class="mt-5 text-center">
+    <app-loader></app-loader>
+  </div>
+  <div class="selection" *ngIf="!showLoader">
+    <label for="movieCat" class="catLabel">Select Category:</label>
+    <select
+      name="cat"
+      id="movieCat"
+      class="form-control"
+      [(ngModel)]="selectedCatID"
+    >
+      <option value="0" selected>All</option>
+      <
+      <ng-container *ngFor="let cat of categoryList; let i = index">
+        {{ cat }}
+        <option [value]="cat.id" [id]="i">{{ cat.name }}</option>
+      </ng-container>
+    </select>
+  </div>
+  <div class="mb-3">
+    <div class="myCards m-5">
+      <div class="row">
+        <ng-container
+          *ngFor="let item of categorizedMovies; let i = index; trackBy: track"
+        >
+          <div
+            *ngIf="
+              selectedCatID == 0 ? true : item.category_id == selectedCatID
+            "
+            class="col-md-3 mb-3"
+          >
+            <div class="card mb-3" style="box-shadow: 0 0 10px #126daa">
+              <img
+                [src]="'https://test-api.storexweb.com/' + item.image"
+                onerror="this.src='./assets/movie.jpg'"
+                class="card-img-top"
+                alt="..."
+                style="
+                  max-width: 100%;
+                  width: auto;
+                  height: 200px;
+                  margin: 20px auto;
+                "
+              />
+              <div class="card-body">
+                <h5 class="card-title alert alert-primary mt-1">
+                  {{ item.name }}
+                </h5>
+                <hr />
+                <p class="card-text alert alert-primary">
+                  {{ item.description }}
+                </p>
+
+                <div class="form-group mt-3 p-2 row justify-content-between">
+                  <button
+                    class="btn btn-danger col-4"
+                    (click)="deleteMovie(item.id)"
+                  >
+                    X Delete
+                  </button>
+                  <button
+                    class="btn btn-warning col-4"
+                    (click)="openAddMovieToUpdate(item.id)"
+                  >
+                    Update
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
